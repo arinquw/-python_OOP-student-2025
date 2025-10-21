@@ -1,0 +1,52 @@
+# points_to_letters = {
+#     1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'S', 'T', 'R', 'А', 'В', 'Е', 'И', 'Н', 'О', 'С', 'Т'],
+#     2: ['D', 'G', 'Д', 'К', 'Л', 'М', 'П', 'У'],
+#     3: ['B', 'C', 'M', 'P', 'Б', 'Г', 'Ё', 'Ь', 'Я'],
+#     4: ['F', 'H', 'V', 'W', 'Y', 'Р', 'Й', 'Р' 'Ы'],
+#     5: ['K', 'Ж', 'З', 'Ч', 'Ц'],
+#     8: ['J', 'X', 'Ш', 'Э', 'Ю', 'Х' 'Х'],
+#     10: ['Q', 'Z', 'Ф', 'Щ', 'Ъ']
+# }
+# gamers = {} #словарь игрока
+# count_user = int(input("сколько человек будет играть?/:"))
+# for i in range(count_user):
+#     name = input("введите имя игрока:")
+#     gamers[name] = 0
+# print(f"писок игроков: \n{gamers}")
+# # result = 0
+# # 10 раундов
+# for raund in range(10):
+#     for gamer in gamers.keys():
+#         print("*"*11)
+#         print(f"ходит игрок {gamer}")
+#         answer = input("введите слово:")
+#         for i in answer:
+#             for key, value in dictionnary.items():
+#                 if i in value:
+#                     gamers[gamer] += key
+# print("игра окончена! \n таблица игроков:")
+# for key, value in dictionnary.items():
+#     print(f"{key} -> {value} баллов")
+# result_user = ' '
+# result_user = ' '
+# for key, value in gamers.items():
+#     if result_value < value:
+#         result_value = value
+#         result_user = key
+# print(f"победитель: {result_user}")
+from sys import intern
+
+backpack = {'зажигалка':20, 'компас':100, 'фрукты':500, 'рубашка':300,
+            'термос':1000, 'аптечка':200, 'куртка':600, 'бинокль':400, 
+            'удочка':1300, 'салфетки':40, 'бутерброды':800, 'палатка':5500,
+            'спальный мешок':2500, 'изолента':250, 'котел':3000
+}
+max_mass = int(input("введитемаксимальный вес для похода:"))
+inter_mass = 0
+while iner_mass < max_mass:
+    print(backpack)
+    answer = input("что вы хотите взять с собой:")
+    for key, value in backpack.items():
+        if key == answer:
+            iner_mass += backpack[key]
+print(f"рюкзак заполнен, текущая масса:{iner_mass}") 
