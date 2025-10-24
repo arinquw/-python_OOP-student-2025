@@ -1,0 +1,69 @@
+#ксперимент монте-карло
+import datetime
+from random import randint
+def getbirthday(number0fBirthdays):
+    birthdays = [] #писок дней рождений
+    for i in range(number0fBirthdays):
+                # год в нашей имитации роли не играет,
+        # лишь бы в объектах дней рождения он был однаков
+        start0Year = datetime.date(2000, 1, 1)
+        # случайный день года
+        randomNumber0fDays = datetime.timedelta(randint(0, 364))
+        birthday = start0Year + randomNumber0fDays +randomNumber0fDays
+        birthdays.append(birthday) #добавляем в список
+    return birthdays
+
+'''
+принимает список дней рождений. обрабатывает его и возвращает совпадения в 
+датах, которые встречаются несколько раз
+'''
+def getMatch(birtdays):
+    if len(birtdays) == len(set(birtdays)):
+        return None # даты не совпадают, выходим из программы
+    for a, birthdayA in enumerate(birtdays):
+        for b, birthdayB in enumerate(birtdays[a+1 : ]):
+            if birthdayA == birthdayB:
+                return birthdayA # даты совпали
+# MAIN
+def main():
+    # кортедж месяцев в году
+    Months = ('Jan' , 'Feb' , 'Mar' , 'Apr' , 'May' , "Jun" ,
+              "Jul" , "Aug" , "Sep" , "Oct" , "Nov" , "Dec")
+    print("Добро пожаловать в приложение для симуляции совпадения "
+          "дат рождения")
+    while True: #апрашвает данные, пока пользователь
+        # не введет допустиые значения
+        print("сколько симуляций вы хотите сделать \n P.S. max = 100")
+        response = input("--->")
+        if response. isdecimal() and 0 < int(response) <= 100:
+            numBDdays = int(response)
+            break
+    print()
+    #генерируем и отображаем дни рождения
+    birthdays = getbirthday(numBDdays)
+    for i, birthday in enumerate(birthdays):
+        if i != 0:
+            print(", ", end="")
+        months = Months[birthday.month - 1]
+        dateText = "{} {}".format(months, birthday.day)
+        print(dateText, end="")
+    print()
+    print()
+    print(f"генерация {numBDdays} лучайных симуляций")
+    input("для продолжения введите Enter...")
+    print("запуск 100.000 симуляций")
+    simMatch = 0
+    for i in range(100_000):
+        if i % 100 == 0:
+            print(i, "запущена симуляция...")
+        birthdays = getMatch(birthdays)
+        if getMatch(birthdays) != None:
+            simMatch += 1
+    print("было выполнено 100.000 симуляций.")
+    probability = round (simMatch / 100 * 100, 2)
+    print("процент попадения",probability, "%")
+    print("количество дат для иследования:" ,numBDdays)
+    print("количество циклов симуляции:",simMatch)
+
+if __name__ == '__main__':
+    main()
